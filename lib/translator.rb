@@ -22,15 +22,17 @@ end
 def get_japanese_emoticon(path, emoticon)
   emotis = load_library(path)
   word = emotis["get_emoticon"][emoticon]
-  translate = emotis["get_meaning"]
-  translate.each do |k,v|
-  		if v == word
-  			return k
-      else return "Sorry, that emoticon was not found"
-    	end
+  	if word != nil
+  		return word
+ 	else return "Sorry, that emoticon was not found"
   end
 end
 
 def get_english_meaning(path, emoticon)
   emotis = load_library(path)
+  word = emotis["get_meaning"][emoticon]
+  if word != nil
+  		return word.to_s
+ 	else return "Sorry, that emoticon was not found"
+  end
 end
